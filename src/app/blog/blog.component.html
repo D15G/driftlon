@@ -1,0 +1,47 @@
+<mat-toolbar>
+  <span>Driftlon Blog Erfasser</span>
+</mat-toolbar>
+
+<div class="wrapper">
+  <mat-card>
+    <h2>Blog erfassen</h2>
+
+    <form class="example-form" #blogForm="ngForm">
+      <mat-form-field class="form-input">
+        <input matInput placeholder="Titel" value="Tag " [(ngModel)]="uploaded.titel" name="titel">
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <input matInput
+               [matDatepicker]="picker"
+               placeholder="Datum angeben"
+               [(ngModel)]="uploaded.datum"
+               name="datum"
+        >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field class="form-textarea">
+        <textarea matInput placeholder="Blogeintrag" [(ngModel)]="uploaded.text" name="text"></textarea>
+      </mat-form-field>
+    </form>
+
+    <br>
+
+    <input type="file" (change)="detectFiles($event)">
+
+    <br>
+
+    <img [src]="image" class="pic-preview">
+
+    <br>
+
+    <button mat-raised-button color="primary" (click)="upload()">Veröffentlichen</button>
+
+  </mat-card>
+</div>

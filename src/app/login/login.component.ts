@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
+import {AuthService, User} from '../_core/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,25 +10,25 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  public username: string;
-  public password: string;
+  public user: User = { email: 'driftlon@ictbz-blj.ch', password: 'VielBier' };
   public errMsg = '';
 
 
   @ViewChild('loginForm') public loginForm: NgForm;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private authService: AuthService) {
   }
 
   async ngOnInit() {
   }
 
   async login() {
-    console.log(this.username + ' / ' + this.password);
     if (this.loginForm.valid === true) {
-      if (this.username.match('DriftlonAdmin') && this.password.match('BrutalLazyJ')) {
-        this.router.navigateByUrl('/info');
-      } else {
+      try {
+        await this.authService.loginWithEmailAndPassword(this.user);
+        this.router.navigateByUrl('/blog');
+      } catch (e) {
         this.errMsg = 'Login fehlgeschlagen!';
       }
     }

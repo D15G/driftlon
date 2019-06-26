@@ -3,6 +3,7 @@ import {
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
+  MatDatepickerModule,
   MatDialogModule,
   MatDividerModule,
   MatExpansionModule,
@@ -11,6 +12,7 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
+  MatNativeDateModule,
   MatPaginatorModule,
   MatSelectModule,
   MatSidenavModule,
@@ -22,6 +24,7 @@ import {
 @NgModule({
   imports: [
     MatCardModule,
+    MatDatepickerModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -37,11 +40,14 @@ import {
     MatSortModule,
     MatDialogModule,
     MatSelectModule,
+    MatNativeDateModule,
     MatExpansionModule,
     MatButtonToggleModule
   ],
   exports: [
     MatCardModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
