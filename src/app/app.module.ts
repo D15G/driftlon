@@ -13,6 +13,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AuthGuard} from './_core/auth.guard';
+import {DatePipe} from '@angular/common';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyDDX6D0cNZV3TLLea-tj5igxOxr1Ev7htE',
@@ -43,6 +44,7 @@ export const firebaseConfig = {
   ],
   providers: [
     AuthGuard,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
